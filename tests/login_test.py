@@ -14,16 +14,16 @@ class TestLogin:
         self.outlook_main_page = OutlookMainPage(page)
 
     @pytest.mark.smoke
-    def test_valid_login(self, set_up):
-        page = set_up
+    def test_valid_login(self, page_with_screenshot_on_failure):
+        page = page_with_screenshot_on_failure
         page.goto(self.start_advertising_page.BASE_URL)
         self.start_advertising_page.sign_in_button_locator.click()
         self.login_page.login("TestUserArtemV@outlook.com", "!@#qwe#@!")
         expect(self.outlook_main_page.account_manager_locator).to_be_visible()
 
     @pytest.mark.smoke
-    def test_invalid_password_login(self, set_up):
-        page = set_up
+    def test_invalid_password_login(self, page_with_screenshot_on_failure):
+        page = page_with_screenshot_on_failure
         page.goto(self.start_advertising_page.BASE_URL)
         self.start_advertising_page.sign_in_button_locator.click()
         self.login_page.login_field_locator.click()
@@ -38,7 +38,7 @@ class TestLogin:
         self.login_page.sign_in_button_locator.click()
         expect(self.login_page.invalid_password_message_locator).to_be_visible()
         self.login_page.password_field_locator.click()
-        self.login_page.password_field_locator.fill("!@#qwe#@!")
+        self.login_page.password_field_locator.fill("!@#qwe#@!*")
         self.login_page.sign_in_button_locator.click()
         self.login_page.no_button_locator.click()
         expect(self.outlook_main_page.account_manager_locator).to_be_visible()
