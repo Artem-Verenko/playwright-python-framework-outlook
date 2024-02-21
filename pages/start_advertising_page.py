@@ -7,4 +7,4 @@ class StartAdvertisingPage:
 
     def __init__(self, page: Page):
         self.page = page
-        self.sign_in_button_locator = page.get_by_label("Sign in to your account")
+        self.sign_in_button_locator = page.locator("#mectrl_headerPicture")
