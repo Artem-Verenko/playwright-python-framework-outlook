@@ -29,6 +29,7 @@ jobs:
         pip install flake8 pytest-playwright
         python -m pip install playwright
         python -m pip install pytest-playwright-visual
+        python -m pip install pytest-reporter-html1
     - name: Install playwright browser
       run: python -m playwright install firefox
     - name: Lint with flake8
