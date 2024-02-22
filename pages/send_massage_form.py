@@ -6,6 +6,7 @@ class SendMassageForm:
         self.page = page
         self.to_field_locator = page.locator('div[aria-label="To"]')
         self.person_field_locator = page.locator('[class^="personaContainer"]')
+        self.alternative_person_field_locator = page.locator('div#PickerFooterUseTypeAddress')
         self.subject_field_locator = page.get_by_placeholder("Add a subject")
         self.message_body_field_locator = page.get_by_label("Message body, press Alt+F10")
         self.send_button_locator = page.get_by_title("Send (Ctrl+Enter)")
@@ -13,7 +14,10 @@ class SendMassageForm:
     def send_massage(self, email: str, subject: str, message: str):
         self.to_field_locator.click()
         self.to_field_locator.fill(email)
-        self.person_field_locator.click()
+        try:
+            self.person_field_locator.click()
+        except:
+            self.alternative_person_field_locator.click()
         self.subject_field_locator.click()
         self.subject_field_locator.fill(subject)
         self.message_body_field_locator.click()

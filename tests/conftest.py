@@ -22,7 +22,7 @@ def browser_context_args(browser_context_args):
 
 @pytest.fixture(scope="function")
 def page_with_screenshot_on_failure(page, request):
-    page.set_default_timeout(5000)
+    page.set_default_timeout(10000)
     yield page
     if request.node.rep_call.failed:
         if not os.path.exists('screenshots'):

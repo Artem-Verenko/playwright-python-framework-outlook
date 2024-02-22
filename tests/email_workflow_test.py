@@ -22,7 +22,7 @@ class TestEmailWorkflow:
         page = page_with_screenshot_on_failure
         page.goto(self.start_advertising_page.BASE_URL)
         self.start_advertising_page.sign_in_button_locator.click()
-        self.login_page.login("TestUserArtemV@outlook.com", "!@#qwe#@!")
+        self.login_page.login("TestUserArtemV1@outlook.com", "!@#qwe#@!")
         expect(self.outlook_main_page.account_manager_locator).to_be_visible()
         self.outlook_main_page.new_massage_locator.click()
         self.send_massage_form.send_massage("artem.verenco@gmail.com", "Test massage", "test")
