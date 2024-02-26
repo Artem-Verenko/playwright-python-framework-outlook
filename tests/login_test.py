@@ -18,7 +18,7 @@ class TestLogin:
         page = page_with_screenshot_on_failure
         page.goto(self.start_advertising_page.BASE_URL)
         self.start_advertising_page.sign_in_button_locator.click()
-        self.login_page.login("TestUserArtemV1@outlook.com", "!@#qwe#@!")
+        self.login_page.login("TestUserArtemV2@outlook.com", "!@#qwe#@!")
         expect(self.outlook_main_page.account_manager_locator).to_be_visible()
 
     @pytest.mark.smoke
@@ -32,7 +32,7 @@ class TestLogin:
         page.wait_for_load_state()
         expect(self.login_page.invalid_email_message_locator).to_be_visible()
         self.login_page.login_field_locator.click()
-        self.login_page.login_field_locator.fill("TestUserArtemV1@outlook.com")
+        self.login_page.login_field_locator.fill("TestUserArtemV2@outlook.com")
         self.login_page.next_button_locator.click()
         self.login_page.password_field_locator.click()
         self.login_page.password_field_locator.fill("invalid_password")
